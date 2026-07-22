@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Site</title>
+        <meta charset="UTF-8">
+        <style>
+            body{
+                margin:0px;
+                padding:0px;
+            }
+            .ust-menyular {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 0px;
+                background-color: #ffffff;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            .navbar, .navbar1{
+                display:flex;
+                gap:30px;
+                margin:0 20px;
+            }
+            .navbar a, .navbar1 a{
+                text-decoration: none;
+                color:black;
+                font-weight: bold;
+                font-size: 18px;
+                cursor:pointer;
+            }
+            .menu-container{
+                width:100%;
+                margin:0px;
+                padding:0px;
+                margin-top:10px;
+            }
+            
+            /* CSS :target mexanizmi ilə səhifələmə */
+            .menu-section {
+                display: none;
+            }
+            /* Default olaraq (və ya #drinks seçiləndə) Drinks bölməsini göstər */
+            #drinks, .menu-section:target {
+                display: block;
+            }
+            /* Əgər başqa bir bölmə target olubsa, drinks gizlənsin */
+            :has(:target:not(#drinks)) #drinks {
+                display: none;
+            }
+
+            .hot-drinks-container, .cold-drinks-container, .food1-container{
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 20px 2%;
+            }
+            .drink-card, .drink1-card, .food1-card {
+                background-color: #fcfcfc;
+                border: 1px solid #ddd;
+                border-radius: 12px;
+                width: 150px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+                overflow: hidden;
+                text-align: center;
+                font-family: Arial, sans-serif;
+                transition: transform 0.2s;
+            }
+            .drink-card:hover, .drink1-card:hover, .food1-card:hover {
+                transform: translateY(-5px);
+            }
+            .drink-card img, .drink1-card img, .food1-card img {
+                width: 100%;
+                height: 140px;
+                object-fit: cover;
+            }
+            .section-line{
+                width:100%;
+                border:none;
+                border-top:3px solid black;
+                margin:40px 0 25px 0;
+            }
+            .section-title{
+                text-align:center;
+                font-size:48px;
+                margin-bottom:40px;
+            }
+            .drink-info, .tea-info, .hc-info, .latte-info, .cappucino-info, .americano-info, .greentea-info, .drink1-info, .food-info, .food1-info, .bubbletea-info {
+                padding: 10px;
+                font-family: Arial, sans-serif;
+            }
+            h4 {
+                margin: 5px 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Naviqasiya Menyusu -->
+        <div class="ust-menyular">
+            <div class="navbar">
+                <a href="#drinks">Drinks</a>
+                <a href="#foods">Foods</a>
+                <a href="#snacks">Snacks</a>
+                <a href="#fruits">Fruits</a>
+            </div>
+
+            <div class="navbar1">
+                <a href="#location">Location</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+
+        <div class="menu-container">
+
+            <!-- DRINKS BÖLMƏSİ (Həm İsti, Həm Soyuq İçkilər) -->
+            <div class="menu-section" id="drinks">
+                <h1 align="center" style="font-size:48px;">Hot drinks</h1>
+                <div class="hot-drinks-container">
+                    <div class="drink-card">
+                        <img src="coffee.jpg" alt="Coffee">
+                        <div class="drink-info">
+                            <h4>Coffee</h4>
+                            <div style="font-size:12px; color:#555;">Espresso, steamed milk, rich foam</div>
+                            <div style="font-weight:bold; margin-top:5px;">$3</div>
+                        </div>
+                    </div>
+                    <div class="drink-card">
+                        <img src="tea.jpg" alt="Tea">
+                        <div class="tea-info">
+                            <h4>Tea</h4>
+                            <div style="font-size:12px; color:#555;">Green tea, lemon, honey</div>
+                            <div style="font-weight:bold; margin-top:5px;">$2</div>
+                        </div>
+                    </div>
+                    <div class="drink-card">
+                        <img src="hc.jpg" alt="Hc">
+                        <div class="hc-info">
+                            <h4>Hot chocolate</h4>
+                            <div style="font-size:12px; color:#555;">Cocoa, steamed milk, whipped cream</div>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+                    <div class="drink-card">
+                        <img src="latte.jpg" alt="Latte">
+                        <div class="latte-info">
+                            <h4>Latte</h4>
+                            <div style="font-size:12px; color:#555;">Espresso, steamed milk, light foam</div>
+                            <div style="font-weight:bold; margin-top:5px;">$7</div>
+                        </div>
+                    </div>
+                    <div class="drink-card">
+                        <img src="cappucino.jpg" alt="Cappucino">
+                        <div class="cappucino-info">
+                            <h4>Cappucino</h4>
+                            <div style="font-size:12px; color:#555;">Espresso, hot water, sugar</div>
+                            <div style="font-weight:bold; margin-top:5px;">$10</div>
+                        </div>
+                    </div>
+                    <div class="drink-card">
+                        <img src="americano.jpg" alt="Americano">
+                        <div class="americano-info">
+                            <h4>Americano</h4>
+                            <div style="font-size:12px; color:#555;">Espresso, hot water, sugar</div>
+                            <div style="font-weight:bold; margin-top:5px;">$10</div>
+                        </div>
+                    </div>
+                    <div class="drink-card">
+                        <img src="greentea.jpg" alt="Greentea">
+                        <div class="greentea-info">
+                            <h4>Green Tea</h4>
+                            <div style="font-size:12px; color:#555;">Green tea leaves, hot water, lemon</div>
+                            <div style="font-weight:bold; margin-top:5px;">$6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-line">
+                <h3 class="section-title">Cold &amp; Refreshing Drinks</h3>
+                <div class="cold-drinks-container">
+                    <div class="drink1-card">
+                        <img src="lemonade.jpg" alt="Lemonade">
+                        <div class="drink1-info">
+                            <h4>Lemonade</h4>
+                            <div style="font-size:12px; color:#555;">Fresh lemon juice, Water, Sugar syrup</div>
+                            <div style="font-weight:bold; margin-top:5px;">$2</div>
+                        </div>
+                    </div>
+                    <div class="drink1-card">
+                        <img src="juice.jpg" alt="Juice">
+                        <div class="drink1-info">
+                            <h4>Juice</h4>
+                            <div style="font-size:12px; color:#555;">Fresh fruits, water, ice</div>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+                    <div class="drink1-card">
+                        <img src="sodas.jpg" alt="Sodas">
+                        <div class="drink1-info">
+                            <h4>Sodas</h4>
+                            <div style="font-size:12px; color:#555;">Water, Sugar, Natural Flavors</div>
+                            <div style="font-weight:bold; margin-top:5px;">$6</div>
+                        </div>
+                    </div>
+                    <div class="drink1-card">
+                        <img src="ed.jpg" alt="Ed">
+                        <div class="drink1-info">
+                            <h4>Energy drinks</h4>
+                            <div style="font-size:12px; color:#555;">Caffeine, Sugar, Water</div>
+                            <div style="font-weight:bold; margin-top:5px;">$10</div>
+                        </div>
+                    </div>
+                    <div class="drink1-card">
+                        <img src="icetea.jpg" alt="Ice tea">
+                        <div class="drink1-info">
+                            <h4>Ice tea</h4>
+                            <div style="font-size:12px; color:#555;">Fresh fruit, ice cubes, black tea</div>
+                            <div style="font-weight:bold; margin-top:5px;">$12</div>
+                        </div>
+                    </div>
+                    <div class="drink1-card">
+                        <img src="moxito.jpg" alt="Moxito">
+                        <div class="drink1-info">
+                            <h4>Moxito</h4>
+                            <div style="font-size:12px; color:#555;">Fresh lime, fresh mint leaves, 7UP</div>
+                            <div style="font-weight:bold; margin-top:5px;">$12</div>
+                        </div>
+                    </div>
+                    <div class="drink1-card">
+                        <img src="bubbletea.jpg" alt="Bubbletea">
+                        <div class="drink1-info">
+                            <h4>Bubble Tea</h4>
+                            <div style="font-size:12px; color:#555;">Strong Brewed Tea, Boba, Milk</div>
+                            <div style="font-weight:bold; margin-top:5px;">$13</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-section" id="foods">
+                <h1 align="center" style="font-size:48px;">Pizza</h1>
+                <div class="hot-drinks-container">
+                    <div class="food1-card">
+                        <img src="margarita.jpg" alt="Margarita">
+                        <div class="food-info">
+                            <h4>Margarita</h4>
+                            <div style="font-size:12px; color:#555;">Pizza Dough, Tomato Sauce, Mozzarella, Basil</div>
+                            <div style="font-weight:bold; margin-top:5px;">$8</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="pepperoni.jpg" alt="Pepperoni">
+                        <div class="food-info">
+                            <h4>Pepperoni</h4>
+                            <div style="font-size:12px; color:#555;">Pizza Dough, Tomato Sauce, Mozzarella, Pepperoni</div>
+                            <div style="font-weight:bold; margin-top:5px;">$9</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="four-cheese.jpg" alt="Four Cheese">
+                        <div class="food-info">
+                            <h4>Four Cheese</h4>
+                            <div style="font-size:12px; color:#555;">Mozzarella, Gorgonzola, Parmesan, Fontina</div>
+                            <div style="font-weight:bold; margin-top:5px;">$11</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="veggie.jpg" alt="Vegetarian">
+                        <div class="food-info">
+                            <h4>Vegetarian</h4>
+                            <div style="font-size:12px; color:#555;">Bell Peppers, Mushrooms, Olives, Corn</div>
+                            <div style="font-weight:bold; margin-top:5px;">$9</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="bbq-chicken.jpg" alt="BBQ Chicken">
+                        <div class="food-info">
+                            <h4>BBQ Chicken</h4>
+                            <div style="font-size:12px; color:#555;">BBQ Sauce, Grilled Chicken, Mozzarella, Red Onions</div>
+                            <div style="font-weight:bold; margin-top:5px;">$12</div>
+                        </div>
+                    </div>
+
+
+                    <div class="food1-card">
+                        <img src="capricciosa.jpg" alt="capricciosa">
+                        <div class="food-info">
+                            <h4>Capriccosa</h4>
+                            <div style="font-size:12px; color:#555;">Prosciutto cotto, Mushrooms, Artichokes</div>
+                            <div style="font-weight:bold; margin-top:5px;">$13</div>
+                        </div>
+                    </div>
+
+                    <div class="food1-card">
+                        <img src="seafood.jpg" alt="Seafood">
+                        <div class="food-info">
+                            <h4>Seafood</h4>
+                            <div style="font-size:12px; color:#555;">Tomato sauce, mozzarella cheese, shrimp, tuna, calamari</div>
+                            <div style="font-weight:bold; margin-top:5px;">$13</div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="section-line">
+                <h3 class="section-title">Burgers</h3>
+                <div class="food1-container">
+                    <div class="food1-card">
+                        <img src="smash.jpg" alt="Smash">
+                        <div class="food-info">
+                            <h4>Smash</h4>
+                            <div style="font-size:12px; color:#555;">Beef Patty, Cheddar Cheese, Pickles</div>
+                            <div style="font-weight:bold; margin-top:5px;">$12</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="triple.jpg" alt="Triple">
+                        <div class="food-info">
+                            <h4>Triple</h4>
+                            <div style="font-size:12px; color:#555;">Triple Beef Patties, Cheddar, Lettuce, Tomatoes</div>
+                            <div style="font-weight:bold; margin-top:5px;">$14</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="classic.jpg" alt="Classic">
+                        <div class="food-info">
+                            <h4>Classic</h4>
+                            <div style="font-size:12px; color:#555;">Beef patty, Tomato, Lettuce, Pickles, Cheddar</div>
+                            <div style="font-weight:bold; margin-top:5px;">$15</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="cheese.jpg" alt="Cheese">
+                        <div class="food-info">
+                            <h4>Cheese</h4>
+                            <div style="font-size:12px; color:#555;">Beef patty, Cheddar cheese, Pickles, Ketchup</div>
+                            <div style="font-weight:bold; margin-top:5px;">$13</div>
+                        </div>
+                    </div>
+
+                    <div class="food1-card">
+                        <img src="chicken.jpg" alt="Chicken">
+                        <div class="food-info">
+                            <h4>Chicken</h4>
+                            <div style="font-size:12px; color:#555;">Grilled or crispy chicken breast, Burger bun, Lettuce, Tomato, Mayonnaise</div>
+                            <div style="font-weight:bold; margin-top:5px;">$10</div>
+                        </div>
+                    </div>
+
+                     <div class="food1-card">
+                        <img src="bacon.jpg" alt="Bacon">
+                        <div class="food-info">
+                            <h4>Bacon</h4>
+                            <div style="font-size:12px; color:#555;">Beef patty, Burger bun, Crispy bacon, Cheddar cheese, BBQ sauce, Red onion</div>
+                            <div style="font-weight:bold; margin-top:5px;">$11</div>
+                        </div>
+                    </div>
+
+                     <div class="food1-card">
+                        <img src="mushroom.jpg" alt="Mushroom">
+                        <div class="food-info">
+                            <h4>Mushroom</h4>
+                            <div style="font-size:12px; color:#555;">Beef patty, Brioche bun, Sautéed mushrooms, Swiss cheese, Mayonnaise, Garlic</div>
+                            <div style="font-weight:bold; margin-top:5px;">$14</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-section" id="snacks">
+                <h3 class="section-title" style="margin-top:20px;">Snacks</h3>
+                <div class="hot-drinks-container">
+                    <div class="food1-card">
+                        <img src="almonds.jpg" alt="Almonds">
+                        <div class="food1-info">
+                            <h4>Almonds</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$3</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="hazelnuts.jpg" alt="Hazelnuts">
+                        <div class="food1-info">
+                            <h4>Hazelnuts</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$4</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="chips.jpg" alt="Chips">
+                        <div class="food1-info">
+                            <h4>Chips</h4>
+                            <div style="font-size:12px; color:#555;">Potatoes, vegetable oil, salt</div>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+
+                      <div class="food1-card">
+                        <img src="pringles.jpg" alt="Pringles">
+                        <div class="food1-info">
+                            <h4>Pringles</h4>
+                            <div style="font-size:12px; color:#555;">Potato flakes, vegetable oils, corn flour</div>
+                            <div style="font-weight:bold; margin-top:5px;">$6</div>
+                        </div>
+                    </div>
+
+                      <div class="food1-card">
+                        <img src="chupachups.jpg" alt="Chupa-chups">
+                        <div class="food1-info">
+                            <h4>Chupa-chups</h4>
+                            <div style="font-size:12px; color:#555;">Sugar, Glucose syrup, Citric acid</div>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+
+                      <div class="food1-card">
+                        <img src="doritos.jpg" alt="Doritos">
+                        <div class="food1-info">
+                            <h4>Doritos</h4>
+                            <div style="font-size:12px; color:#555;">Potatoes, vegetable oil, salt</div>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+
+                    <div class="food1-card">
+                        <img src="lays.jpg" alt="Lays">
+                        <div class="food1-info">
+                            <h4>Lays</h4>
+                            <div style="font-size:12px; color:#555;">Potatoes, vegetable oil, salt</div>
+                            <div style="font-weight:bold; margin-top:5px;">$4</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRUITS BÖLMƏSİ -->
+            <div class="menu-section" id="fruits">
+                <h3 class="section-title" style="margin-top:20px;">Fruits</h3>
+                <div class="hot-drinks-container">
+                    <div class="food1-card">
+                        <img src="apple.jpg" alt="Apple">
+                        <div class="food1-info">
+                            <h4>Apple</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$2</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="banana.jpg" alt="Banana">
+                        <div class="food1-info">
+                            <h4>Banana</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$3</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="watermelon.jpg" alt="Watermelon">
+                        <div class="food1-info">
+                            <h4>Watermelon</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$4</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="orange.jpg" alt="Orange">
+                        <div class="food1-info">
+                            <h4>Orange</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$4</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="pineapple.jpg" alt="Pineapplee">
+                        <div class="food1-info">
+                            <h4>Pineapple</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$4</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="mango.jpg" alt="Mango">
+                        <div class="food1-info">
+                            <h4>Mango</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+                    <div class="food1-card">
+                        <img src="strawberry.jpg" alt="Strawberry">
+                        <div class="food1-info">
+                            <h4>Strawberry</h4>
+                            <div style="font-weight:bold; margin-top:5px;">$5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT BÖLMƏSİ -->
+            <div class="menu-section" id="contact">
+                <h2 class="section-title" style="margin-top:20px;">Contact</h2>
+                <center>
+                    <p><b>Phone: </b>+994 50 123 45 67</p>
+                    <p><b>Email:</b> cafe@gmail.com</p>
+                </center>
+            </div>
+
+            <!-- LOCATION BÖLMƏSİ -->
+            <div class="menu-section" id="location">
+                <h2 class="section-title" style="margin-top:20px;">Location</h2>
+                <center>
+                    <p><b>📍 Address:</b> 28 May Street, Baku, Azerbaijan</p>
+                    <p><b>🕒 Opening Hours:</b> 09:00 - 23:00</p>
+                    <p><b>🚗 Parking:</b> Free parking available</p>
+                    <p><b>🚇 Nearest Metro:</b> 28 May Station (5 min walk)</p>
+                </center>
+            </div>
+
+        </div>
+    </body>
+</html>
